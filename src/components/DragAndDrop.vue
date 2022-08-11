@@ -16,8 +16,6 @@
 <script>
 export default {
   name: 'DragAndDrop',
-  delimiters: ['${', '}'],
-  el: '#app',
   data () {
     return {
       filelist: []
@@ -36,7 +34,7 @@ export default {
     },
     drop (event) {
       event.preventDefault()
-      this.filelist = event.dataTransfer.files
+      this.filelist = Array.prototype.slice.call(event.dataTransfer.files)
       this.onChange()
     }
 
